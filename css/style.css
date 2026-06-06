@@ -50,6 +50,34 @@ body {
   align-items: center;
 }
 
+.nav-logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-school-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(0, 102, 204, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 102, 204, 0.2);
+}
+
+.nav-school-logo svg {
+  flex-shrink: 0;
+}
+
+.logo-text {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #0066cc;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
 .nav-logo {
   font-size: 1.5rem;
   font-weight: 700;
@@ -594,6 +622,7 @@ body {
   border-radius: 12px;
   overflow: hidden;
   transition: var(--transition);
+  cursor: pointer;
 }
 
 .proj-card:hover {
@@ -694,6 +723,115 @@ body {
 
 .proj-btn-demo:hover {
   background: rgba(102, 126, 234, 0.1);
+}
+
+/* ===== MODAL ===== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(3px);
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-container {
+  background: white;
+  border-radius: 16px;
+  max-width: 700px;
+  max-height: 85vh;
+  overflow-y: auto;
+  width: 90%;
+  position: relative;
+  animation: slideUp 0.3s ease;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(102, 126, 234, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  cursor: pointer;
+  transition: var(--transition);
+  z-index: 10;
+}
+
+.modal-close:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.modal-content {
+  padding: 3rem 2rem 2rem 2rem;
+}
+
+.modal-content h2 {
+  font-size: 2rem;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+}
+
+.modal-content p {
+  color: var(--text-light);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.modal-content h3 {
+  font-size: 1.3rem;
+  color: var(--dark);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.modal-content ul {
+  margin-left: 1.5rem;
+  color: var(--text-light);
+  line-height: 2;
+}
+
+.modal-content li {
+  margin-bottom: 0.5rem;
+}
+
+.modal-content strong {
+  color: var(--primary);
+  font-weight: 600;
 }
 
 /* ===== TIMELINE SECTION ===== */
@@ -1155,6 +1293,10 @@ body {
     display: none;
   }
 
+  .nav-logo-wrapper {
+    flex: 1;
+  }
+
   .hero-name {
     font-size: 2.5rem;
   }
@@ -1225,6 +1367,11 @@ body {
     width: 45px;
     height: 45px;
   }
+
+  .modal-container {
+    width: 95%;
+    max-height: 90vh;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1234,6 +1381,10 @@ body {
 
   .nav-logo {
     font-size: 1.2rem;
+  }
+
+  .nav-school-logo {
+    display: none;
   }
 
   .hero {
@@ -1270,5 +1421,13 @@ body {
   .btn {
     width: 100%;
     justify-content: center;
+  }
+
+  .modal-content {
+    padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+  }
+
+  .modal-content h2 {
+    font-size: 1.5rem;
   }
 }
